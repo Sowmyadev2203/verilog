@@ -23,8 +23,8 @@ const Panel = styled(Box, {
   top: 0,
   left: position === 'left' ? 0 : '40%',
   background: position === 'left'
-    ? 'linear-gradient(to bottom right,rgb(118, 229, 14), #333333)' // black to dark gray gradient
-    : 'linear-gradient(to bottom right, rgb(118, 229, 14), #424242)',  // dark gray gradient
+    ? 'linear-gradient(to bottom right,rgb(118, 229, 14), #333333)' 
+    : 'linear-gradient(to bottom right, rgb(118, 229, 14), #424242)',  
   color: 'white',
   display: 'flex',
   flexDirection: 'column',
@@ -60,7 +60,7 @@ export default function AuthForm() {
           overflow: 'hidden',
           position: 'relative',
           borderRadius: 5,
-          backgroundColor: '#FFFFFF', // form background white
+          backgroundColor: '#FFFFFF', 
         }}
       >
         <TransitionContainer isSignUp={isSignUp}>

@@ -33,7 +33,7 @@ export default function WaveformPage() {
       >
         <Box
           component="img"
-          src="/waveform.png" // Replace with your actual waveform image path
+          src="/waveform.png" 
           alt="Waveform"
           sx={{
             transform: `scale(${zoom})`,

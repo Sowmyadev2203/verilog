@@ -14,8 +14,8 @@ import {
   Grow,
 } from "@mui/material";
 import { IconButton, Tooltip } from "@mui/material";
-import LightModeIcon from "@mui/icons-material/LightMode"; // Sun icon
-import DarkModeIcon from "@mui/icons-material/DarkMode"; // Moon icon
+import LightModeIcon from "@mui/icons-material/LightMode"; 
+import DarkModeIcon from "@mui/icons-material/DarkMode"; 
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const hoverStyles = {
