@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Typography, Button, Stack, useTheme } from "@mui/material";
-
+import AnimatedTable from "./table";
 
 export default function Home() {
   const theme = useTheme();
@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <Grid
       container
-      spacing={4}
+      spacing={15}
       alignItems="center"
       justifyContent="center"
       sx={{
@@ -51,11 +51,18 @@ export default function Home() {
       {/* Text Content */}
       <Grid item xs={12} md={6}>
         <Typography variant="h3" fontWeight="bold" gutterBottom>
-          Welcome to Verilog
+          Welcome to <span style={{ color: "limegreen" }}>S</span>ilicon
+          <span style={{ color: "limegreen" }}>S</span>andbox
         </Typography>
 
         <Typography variant="h4" fontWeight="medium" gutterBottom>
-          <span style={{ borderRight: "20px solid", paddingRight: 4, color: "limegreen" }}>
+          <span
+            style={{
+              borderRight: "20px solid",
+              paddingRight: 4,
+              color: "limegreen",
+            }}
+          >
             {typed}
           </span>{" "}
           through levels of logic design
@@ -71,17 +78,16 @@ export default function Home() {
 
         <Stack direction="row" spacing={2} mt={2}>
           <Button variant="contained" color="primary" size="large">
-            Get Started
+            Browse Courses
           </Button>
           <Button variant="outlined" color="primary" size="large">
-            Learn More
+            Start Practicing
           </Button>
         </Stack>
       </Grid>
 
-      {/* Responsive Image */}
-      <Grid item xs={12} md={6} sx={{ textAlign: "center" }}>
-        <img
+      <Grid item xs={12} md={6}>
+        {/* <img
           src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
           alt="Learning"
           style={{
@@ -91,7 +97,8 @@ export default function Home() {
             borderRadius: 12,
             boxShadow: theme.shadows[3],
           }}
-        />
+        /> */}
+        <AnimatedTable />
       </Grid>
     </Grid>
   );

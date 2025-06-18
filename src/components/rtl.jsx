@@ -75,7 +75,7 @@ export default function Rtl() {
         <IconButton color="primary" onClick={handleZoomOut}>
           <ZoomOutIcon sx={{ fontSize: 40 }} />
         </IconButton>
-        <IconButton color="secondary" onClick={() => navigate("/courses/intermediate")}>
+        <IconButton color="secondary" onClick={() => navigate("/intermediate")}>
           <ArrowBackIcon sx={{ fontSize: 40 }} />
         </IconButton>
       </Stack>

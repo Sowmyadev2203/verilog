@@ -1,21 +1,23 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import EDAPlaygroundUI from "./components/intermediate";
 import Waveform from "./components/waveform";
 import Rtl from "./components/rtl";
 import Home from "./components/home";
-import Intques from "./components/int";
-import About from "./components/Aboutus";
 import Login from "./components/login";
 import Signup from "./components/signup";
 import Profile from "./components/profile";
-import Courses from "./components/courses";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import React, { useState, useMemo } from "react";
 import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
+import Coding from "./components/coding";
+import { AnimatePresence, motion } from "framer-motion";
+import Training from "./components/training";
+import TrainCode from "./components/traincode";
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const location = useLocation();
 
   const theme = useMemo(
     () =>
@@ -41,14 +43,93 @@ export default function App() {
         toggleTheme={() => setIsDarkMode(!isDarkMode)}
         isDarkMode={isDarkMode}
       />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/courses/intermediate" element={<EDAPlaygroundUI />} />
+
+      <Routes location={location}>
+        {/* These pages have animation */}
+        <Route
+          path="/"
+          element={
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={location.pathname}
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "-100%" }}
+                transition={{ duration: 0.6 }}
+              >
+                <Home />
+              </motion.div>
+            </AnimatePresence>
+          }
+        />
+        <Route
+          path="/intermediate"
+          element={
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={location.pathname}
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "-100%" }}
+                transition={{ duration: 0.6 }}
+              >
+                <EDAPlaygroundUI />
+              </motion.div>
+            </AnimatePresence>
+          }
+        />
+        <Route
+          path="/coding"
+          element={
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={location.pathname}
+                initial={{ x: "-100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{ duration: 0.6 }}
+              >
+                <Coding />
+              </motion.div>
+            </AnimatePresence>
+          }
+        />
+        <Route
+          path="/traincode"
+          element={
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={location.pathname}
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "-100%" }}
+                transition={{ duration: 0.6 }}
+              >
+                <TrainCode />
+              </motion.div>
+            </AnimatePresence>
+          }
+        />
+        <Route
+          path="/training"
+          element={
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={location.pathname}
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "-100%" }}
+                transition={{ duration: 0.6 }}
+              >
+                <Training />
+              </motion.div>
+            </AnimatePresence>
+          }
+        />
+
+        {/* Other pages no animation — normal */}
         <Route path="/waveform" element={<Waveform />} />
-        <Route path="/rtl" element={<Rtl/>} />
-        {/* <Route path="/courses" element={<Courses />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/interview" element={<Intques />} /> */}
+        <Route path="/rtl" element={<Rtl />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route

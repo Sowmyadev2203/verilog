@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Coding from "./coding";
 import {
   AppBar,
   Toolbar,
@@ -120,25 +121,41 @@ export default function Navbar({ toggleTheme, isDarkMode }) {
               color: "inherit",
             }}
           >
-            Verilog
+            <span style={{ color: "limegreen" }}>S</span>ilicon
+          <span style={{ color: "limegreen" }}>S</span>andbox
           </Typography>
+
+          <HoverDropdown
+            label="Coding"
+            menuItems={[
+              { label: "Coding", to: "/coding" },
+            ]}
+          />
 
           <HoverDropdown
             label="Courses"
             menuItems={[
-              { label: "Beginner", to: "/courses/beginner" },
-              { label: "Intermediate", to: "/courses/intermediate" },
-              { label: "Advanced", to: "/courses/advanced" },
+              { label: "Digital", to: "/courses/Digital" },
+              { label: "Verilog", to: "/courses/Verilog" },
+              { label: "SystemVerilog", to: "/courses/SystemVerilog" },
+              { label: "UVM", to: "/courses/UVM" },
+              
+            ]}
+          />
+          <HoverDropdown
+            label="Projects"
+            menuItems={[
+              { label: "Design", to: "/courses/Design" },
+              { label: "Verification", to: "/courses/Verification" },
             ]}
           />
 
           <HoverDropdown
             label="Interview"
             menuItems={[
-              { label: "Prep Guide", to: "/interview/guide" },
-              { label: "Mock Interviews", to: "/interview/mock" },
-              { label: "Tips & Tricks", to: "/interview/tips" },
-            ]}
+              { label: "Question sets", to: "/interview/Question sets" },
+              { label: "Sample Resumes", to: "/interview/mock" },
+          ]}
           />
 
           <HoverDropdown
@@ -146,6 +163,7 @@ export default function Navbar({ toggleTheme, isDarkMode }) {
             menuItems={[
               { label: "Help Center", to: "/support/help" },
               { label: "Contact Us", to: "/support/contact" },
+              { label: "Feedback", to: "/support/Feedback" }
             ]}
           />
 
@@ -170,9 +188,7 @@ export default function Navbar({ toggleTheme, isDarkMode }) {
           <Button component={Link} to="/login" color="inherit">
             Login
           </Button>
-          <Button component={Link} to="/signup" color="inherit">
-            Sign Up
-          </Button>
+          
           <Tooltip
             title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
           >

@@ -51,7 +51,7 @@ export default function WaveformPage() {
         <IconButton color="primary" onClick={handleZoomOut}>
           <ZoomOutIcon fontSize="large" />
         </IconButton>
-        <IconButton color="secondary" onClick={() => navigate("/courses/intermediate")}>
+        <IconButton color="secondary" onClick={() => navigate("/intermediate")}>
           Back<ArrowBackIcon fontSize="large"  />
         </IconButton>
       </Stack>
