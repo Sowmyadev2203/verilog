@@ -11,35 +11,18 @@ import {
 import Editor from "@monaco-editor/react";
 import { motion } from "framer-motion";
 
-// const questions = [
-//   {
-//     id: 1,
-//     title: "Basic AND Gate",
-//     note: "Write a Verilog module for a 2-input AND gate.",
-//   },
-//   {
-//     id: 2,
-//     title: "4-bit Adder",
-//     note: "Create a 4-bit adder using structural modeling.",
-//   },
-//   {
-//     id: 3,
-//     title: "D Flip Flop",
-//     note: "Write a positive-edge triggered D flip-flop.",
-//   },
-// ];
+
 
 export default function EDAPlaygroundUI() {
-  // const [selectedQuestion, setSelectedQuestion] = useState(questions[0]);
   const [designCode, setDesignCode] = useState("module design;\nendmodule");
   const [tbCode, setTbCode] = useState("module tb;\nendmodule");
   const navigate = useNavigate();
 
   return (
     <motion.div
-      initial={{ x: "100%" }}
+      initial={{ x: "-100%" }}
       animate={{ x: 0 }}
-      exit={{ x: "-100%" }}
+      exit={{ x: "100%" }}
       transition={{ duration: 0.6 }}
       style={{
         width: "100%",
@@ -65,15 +48,7 @@ export default function EDAPlaygroundUI() {
           ← Back
         </Button>
 
-        {/* Question and Note Display */}
-        {/* <Paper elevation={3} sx={{ p: 2 }}>
-          <Typography variant="h6" fontWeight="bold">
-            {selectedQuestion.title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {selectedQuestion.note}
-          </Typography>
-        </Paper> */}
+       
 
         {/* Code Editor Panels */}
         <Grid container spacing={1} sx={{ flexGrow: 1 }}>

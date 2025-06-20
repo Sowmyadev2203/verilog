@@ -1,13 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Box,
-  Grid,
-  Paper,
-  Typography,
-  Button,
-  Stack,
-} from "@mui/material";
+import { Box, Grid, Paper, Typography, Button, Stack } from "@mui/material";
 import Editor from "@monaco-editor/react";
 import { motion } from "framer-motion";
 
@@ -37,9 +30,9 @@ export default function EDAPlaygroundUI() {
 
   return (
     <motion.div
-      initial={{ x: "100%" }}
-      animate={{ x: 0 }}
-      exit={{ x: "-100%" }}
+      initial={{ x: "100%" }} // Start from right
+      animate={{ x: 0 }} // Animate to center
+      exit={{ x: "-100%" }} // Exit to left
       transition={{ duration: 0.6 }}
       style={{
         width: "100%",
@@ -136,7 +129,12 @@ export default function EDAPlaygroundUI() {
         </Grid>
 
         {/* Action Buttons */}
-        <Stack direction="row" justifyContent="center" spacing={1} sx={{ my: 1 }}>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          spacing={1}
+          sx={{ my: 1 }}
+        >
           <Button variant="outlined">RUN</Button>
           <Button variant="outlined" onClick={() => navigate("/waveform")}>
             WAVEFORM

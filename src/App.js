@@ -18,6 +18,7 @@ import TrainCode from "./components/traincode";
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const location = useLocation();
+  const direction = location.state?.direction || "rightToLeft";  // 👈 NEW: get direction from location.state
 
   const theme = useMemo(
     () =>
@@ -68,9 +69,9 @@ export default function App() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={location.pathname}
-                initial={{ x: "100%" }}
+                initial={{ x: "-100%" }}
                 animate={{ x: 0 }}
-                exit={{ x: "-100%" }}
+                exit={{ x: "100%" }}
                 transition={{ duration: 0.6 }}
               >
                 <EDAPlaygroundUI />
@@ -78,22 +79,26 @@ export default function App() {
             </AnimatePresence>
           }
         />
-        <Route
+        {/* <Route
           path="/coding"
           element={
             <AnimatePresence mode="wait">
               <motion.div
                 key={location.pathname}
-                initial={{ x: "-100%" }}
+                initial={{
+                  x: direction === "leftToRight" ? "-100%" : "100%"
+                }}
                 animate={{ x: 0 }}
-                exit={{ x: "100%" }}
+                exit={{
+                  x: direction === "leftToRight" ? "100%" : "-100%"
+                }}
                 transition={{ duration: 0.6 }}
               >
                 <Coding />
               </motion.div>
             </AnimatePresence>
           }
-        />
+        /> */}
         <Route
           path="/traincode"
           element={
@@ -128,6 +133,7 @@ export default function App() {
         />
 
         {/* Other pages no animation — normal */}
+         <Route path="/coding" element={<Coding />} />
         <Route path="/waveform" element={<Waveform />} />
         <Route path="/rtl" element={<Rtl />} />
         <Route path="/login" element={<Login />} />

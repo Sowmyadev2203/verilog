@@ -10,7 +10,7 @@ const Home = () => {
   const pageVariants = {
     hidden: { x: "100%" },
     visible: { x: 0 },
-    exit: { x: "-100%" },
+    // exit: { x: "-100%" },
   };
 
 
