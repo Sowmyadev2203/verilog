@@ -18,6 +18,7 @@ import { IconButton, Tooltip } from "@mui/material";
 import LightModeIcon from "@mui/icons-material/LightMode"; 
 import DarkModeIcon from "@mui/icons-material/DarkMode"; 
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import VerilogHome from "./veriloghome";
 
 const hoverStyles = {
   textTransform: "none",
@@ -187,6 +188,9 @@ export default function Navbar({ toggleTheme, isDarkMode }) {
 
           <Button component={Link} to="/login" color="inherit">
             Login
+          </Button>
+          <Button component={Link} to="/verilog" color="inherit">
+           verilog
           </Button>
           
           <Tooltip

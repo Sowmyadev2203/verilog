@@ -14,6 +14,7 @@ import Coding from "./components/coding";
 import { AnimatePresence, motion } from "framer-motion";
 import Training from "./components/training";
 import TrainCode from "./components/traincode";
+import VerilogHome from "./components/veriloghome";
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -137,6 +138,7 @@ export default function App() {
         <Route path="/waveform" element={<Waveform />} />
         <Route path="/rtl" element={<Rtl />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/verilog" element={<VerilogHome />} />
         <Route path="/signup" element={<Signup />} />
         <Route
           path="/profile"
