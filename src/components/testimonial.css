@@ -1,0 +1,11 @@
+.swiper-pagination-bullet {
+  border-radius: 0;
+  border: 2px solid goldenrod;
+  background: transparent;
+  width: 16px;
+  height: 16px;
+  margin: 0 4px !important;
+}
+.swiper-pagination-bullet-active {
+  background-color: goldenrod;
+}

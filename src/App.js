@@ -15,6 +15,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Training from "./components/training";
 import TrainCode from "./components/traincode";
 import VerilogHome from "./components/veriloghome";
+import Contact from "./components/contact";
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -132,6 +133,23 @@ export default function App() {
             </AnimatePresence>
           }
         />
+         <Route
+          path="/contact"
+          element={
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={location.pathname}
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "-100%" }}
+                transition={{ duration: 0.6 }}
+              >
+                <Contact />
+              </motion.div>
+            </AnimatePresence>
+          }
+        />
+
 
         {/* Other pages no animation — normal */}
          <Route path="/coding" element={<Coding />} />

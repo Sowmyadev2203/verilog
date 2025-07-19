@@ -19,6 +19,7 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode"; 
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import VerilogHome from "./veriloghome";
+import Contact from "./contact";
 
 const hoverStyles = {
   textTransform: "none",
@@ -162,8 +163,7 @@ export default function Navbar({ toggleTheme, isDarkMode }) {
           <HoverDropdown
             label="Support"
             menuItems={[
-              { label: "Help Center", to: "/support/help" },
-              { label: "Contact Us", to: "/support/contact" },
+              { label: "Contact Us", to: "/contact" },
               { label: "Feedback", to: "/support/Feedback" }
             ]}
           />
