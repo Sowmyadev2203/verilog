@@ -50,8 +50,6 @@ const cardData = [
   },
 ];
 
-
-
 const MotionGrid = motion(Grid);
 const MotionBox = motion(Box);
 
@@ -300,7 +298,7 @@ export default function Home() {
               maxWidth: "900px",
             }}
           >
-            World’s First Silicon-Based Platform <br />
+            World’s Pioneered Silicon-Based Platform <br />
             Offering <strong>Training</strong>, <strong>Coding</strong>, and{" "}
             <strong>Skill-Based Learning</strong> Facilities.
           </Typography>

@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation,Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import EDAPlaygroundUI from "./components/intermediate";
 import Waveform from "./components/waveform";
@@ -13,9 +13,13 @@ import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 import Coding from "./components/coding";
 import { AnimatePresence, motion } from "framer-motion";
 import Training from "./components/training";
-import TrainCode from "./components/traincode";
+import TrainCodeTabs from "./components/traincode/TrainCodeTabs";
 import VerilogHome from "./components/veriloghome";
 import Contact from "./components/contact";
+import Codedes from "./components/traincode/codedes";
+import StartCoding from "./components/traincode/startcodeing";
+import SampleCode from "./components/traincode/samplecode";
+import AiHelp from "./components/traincode/aihelp";
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -101,7 +105,7 @@ export default function App() {
             </AnimatePresence>
           }
         /> */}
-        <Route
+        {/* <Route
           path="/traincode"
           element={
             <AnimatePresence mode="wait">
@@ -112,11 +116,11 @@ export default function App() {
                 exit={{ x: "-100%" }}
                 transition={{ duration: 0.6 }}
               >
-                <TrainCode />
+                <TrainCodeTabs />
               </motion.div>
             </AnimatePresence>
           }
-        />
+        /> */}
         <Route
           path="/training"
           element={
@@ -152,12 +156,21 @@ export default function App() {
 
 
         {/* Other pages no animation — normal */}
-         <Route path="/coding" element={<Coding />} />
+         <Route path="/skilltrack" element={<Coding />} />
         <Route path="/waveform" element={<Waveform />} />
         <Route path="/rtl" element={<Rtl />} />
         <Route path="/login" element={<Login />} />
         <Route path="/verilog" element={<VerilogHome />} />
         <Route path="/signup" element={<Signup />} />
+
+  <Route path="/traincode" element={<TrainCodeTabs />}>
+  <Route path="codedes" element={<Codedes />} />
+  <Route path="samplecode" element={<SampleCode />} />
+  <Route path="startcoding" element={<StartCoding />} />
+  <Route path="ai-help" element={<AiHelp />} />
+  <Route index element={<Navigate to="codedes" />} />
+</Route>
+
         <Route
           path="/profile"
           element={

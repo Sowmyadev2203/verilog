@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Coding from "./coding";
 import {
   AppBar,
   Toolbar,
@@ -13,13 +12,12 @@ import {
   MenuList,
   MenuItem,
   Grow,
+  IconButton,
+  Tooltip,
 } from "@mui/material";
-import { IconButton, Tooltip } from "@mui/material";
-import LightModeIcon from "@mui/icons-material/LightMode"; 
-import DarkModeIcon from "@mui/icons-material/DarkMode"; 
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import VerilogHome from "./veriloghome";
-import Contact from "./contact";
 
 const hoverStyles = {
   textTransform: "none",
@@ -103,15 +101,15 @@ function HoverDropdown({ label, menuItems = [] }) {
 export default function Navbar({ toggleTheme, isDarkMode }) {
   return (
     <AppBar
-      position="static"
+      position="fixed" // ✅ changed to fixed
       elevation={0}
       sx={{
+        zIndex: 2000, // ✅ higher z-index to stay above everything
         backgroundColor: "background.paper",
         color: "text.primary",
       }}
     >
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        {/* Left: Logo + Navigation */}
         <Stack direction="row" spacing={3} alignItems="center">
           <Typography
             component={Link}
@@ -124,16 +122,15 @@ export default function Navbar({ toggleTheme, isDarkMode }) {
             }}
           >
             <span style={{ color: "limegreen" }}>S</span>ilicon
-          <span style={{ color: "limegreen" }}>S</span>andbox
+            <span style={{ color: "limegreen" }}>S</span>andbox
           </Typography>
 
           <HoverDropdown
-            label="Coding"
+            label="Codelab"
             menuItems={[
-              { label: "Coding", to: "/coding" },
+              { label: "Learn & Code", to: "/skilltrack" },
             ]}
           />
-
           <HoverDropdown
             label="Courses"
             menuItems={[
@@ -141,7 +138,6 @@ export default function Navbar({ toggleTheme, isDarkMode }) {
               { label: "Verilog", to: "/courses/Verilog" },
               { label: "SystemVerilog", to: "/courses/SystemVerilog" },
               { label: "UVM", to: "/courses/UVM" },
-              
             ]}
           />
           <HoverDropdown
@@ -151,23 +147,20 @@ export default function Navbar({ toggleTheme, isDarkMode }) {
               { label: "Verification", to: "/courses/Verification" },
             ]}
           />
-
           <HoverDropdown
             label="Interview"
             menuItems={[
               { label: "Question sets", to: "/interview/Question sets" },
               { label: "Sample Resumes", to: "/interview/mock" },
-          ]}
+            ]}
           />
-
           <HoverDropdown
             label="Support"
             menuItems={[
               { label: "Contact Us", to: "/contact" },
-              { label: "Feedback", to: "/support/Feedback" }
+              { label: "Feedback", to: "/support/Feedback" },
             ]}
           />
-
           <HoverDropdown
             label="About Us"
             menuItems={[
@@ -178,21 +171,14 @@ export default function Navbar({ toggleTheme, isDarkMode }) {
           />
         </Stack>
 
-        {/* Right: Profile/Auth/Theme Toggle */}
         <Stack direction="row" spacing={2} alignItems="center">
           <Tooltip title="Profile">
             <IconButton component={Link} to="/profile" color="inherit">
               <AccountCircleIcon />
             </IconButton>
           </Tooltip>
-
-          <Button component={Link} to="/login" color="inherit">
-            Login
-          </Button>
-          <Button component={Link} to="/verilog" color="inherit">
-           verilog
-          </Button>
-          
+          <Button component={Link} to="/login" color="inherit">Login</Button>
+          <Button component={Link} to="/verilog" color="inherit">Verilog</Button>
           <Tooltip
             title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
           >
