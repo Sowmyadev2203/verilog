@@ -158,7 +158,7 @@ export default function Navbar({ toggleTheme, isDarkMode }) {
             label="Support"
             menuItems={[
               { label: "Contact Us", to: "/contact" },
-              { label: "Feedback", to: "/support/Feedback" },
+              { label: "Feedback", to: "/Feedback" },
             ]}
           />
           <HoverDropdown

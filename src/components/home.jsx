@@ -14,6 +14,8 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./testimonial.css";
+import Footer from "../components/footer/footer";
+
 
 const courseList = [
   { title: "Digital", subtitle: "Design Foundations" },
@@ -642,6 +644,9 @@ export default function Home() {
           ))}
         </Swiper>
       </Box>
+
+      {/* footer */}
+      <Footer/>
     </>
   );
 }

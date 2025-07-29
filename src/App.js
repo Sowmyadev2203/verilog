@@ -20,6 +20,7 @@ import Codedes from "./components/traincode/codedes";
 import StartCoding from "./components/traincode/startcodeing";
 import SampleCode from "./components/traincode/samplecode";
 import AiHelp from "./components/traincode/aihelp";
+import FeedbackForm from "./components/feedback/feedback"
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -27,21 +28,61 @@ export default function App() {
   const direction = location.state?.direction || "rightToLeft";  // 👈 NEW: get direction from location.state
 
   const theme = useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode: isDarkMode ? "dark" : "light",
-          background: {
-            default: isDarkMode ? "#000000" : "#ffffff",
-            paper: isDarkMode ? "#000000" : "#ffffff",
-          },
-          text: {
-            primary: isDarkMode ? "#fff" : "#000",
+  () =>
+    createTheme({
+      palette: {
+        mode: isDarkMode ? "dark" : "light",
+        background: {
+          default: isDarkMode ? "#0d1117" : "#f5f5f5",  // page background
+          paper: isDarkMode ? "#161b22" : "#ffffff",    // card/panel background
+        },
+        text: {
+          primary: isDarkMode ? "#e6edf3" : "#1a1a1a",   // main text
+          secondary: isDarkMode ? "#8b949e" : "#555",    // subtext
+        },
+        primary: {
+          main: isDarkMode ? "#d9dfe7ff" : "#d1ccdcff",      // buttons, highlights
+        },
+        secondary: {
+          main: isDarkMode ? "#c778dd" : "#d8d2e1ff",      // optional accent
+        },
+      },
+      components: {
+        MuiTextField: {
+          styleOverrides: {
+            root: {
+              '& label': {
+                color: isDarkMode ? '#fff' : undefined,
+              },
+              '& label.Mui-focused': {
+                color: isDarkMode ? '#edeae2ff' : '#161617ff',
+              },
+            },
           },
         },
-      }),
-    [isDarkMode]
-  );
+        MuiOutlinedInput: {
+          styleOverrides: {
+            root: {
+              color: isDarkMode ? '#fff' : undefined,
+              backgroundColor: isDarkMode ? '#1e1e1e' : '#fff',
+              '& .MuiOutlinedInput-notchedOutline': {
+                borderColor: isDarkMode ? '#888' : 'rgba(0, 0, 0, 0.23)',
+              },
+              '&:hover .MuiOutlinedInput-notchedOutline': {
+                borderColor: isDarkMode ? '#bbb' : '#000',
+              },
+              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                borderColor: isDarkMode ? '#dbdeeeff' : '#121213ff',
+              },
+            },
+          },
+        },
+      },
+    }),
+  [isDarkMode]
+);
+
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -162,6 +203,8 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/verilog" element={<VerilogHome />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/feedback" element={<FeedbackForm />} />
+
 
   <Route path="/traincode" element={<TrainCodeTabs />}>
   <Route path="codedes" element={<Codedes />} />
