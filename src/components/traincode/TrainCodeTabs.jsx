@@ -18,12 +18,14 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import Stopwatch from "../Livetimer";
 
 const navTabs = [
-  { label: "codedes", path: "codedes" },
-  { label: "samplecode", path: "samplecode" },
-  { label: "startcoding", path: "startcoding" },
-  { label: "ai-help", path: "ai-help" },
+  { label: "codedes", path: "/traincode/codedes" },
+  { label: "samplecode", path: "/traincode/samplecode" },
+  { label: "startcoding", path: "/traincode/startcoding" },
+  { label: "public-submissions", path: "/traincode/public-submissions" },
 ];
 
 const drawerItems = [
@@ -50,65 +52,86 @@ export default function TrainCodeTabs() {
   );
 
   const handleChange = (event, newValue) => {
-    navigate(navTabs[newValue].path, { relative: "path" });
+    const newPath = navTabs[newValue].path;
+    navigate(newPath, {
+      state: { from: location.pathname },
+      relative: "path",
+    });
   };
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
   };
 
+  //   const goHome = () => {
+  //   if (window.history.length > 2) {
+  //     navigate(-1);
+  //   } else {
+  //     navigate("/traincode"); // fallback route if no history
+  //   }
+  // };
+
   return (
     <Box
       sx={{
-        bgcolor: "#1e1e1e",
+        bgcolor: theme.palette.background.default,
+        color: theme.palette.text.primary,
         height: "100vh",
-        color: "white",
         display: "flex",
         flexDirection: "column",
       }}
     >
       {/* App Bar */}
-      <AppBar position="static" sx={{ bgcolor: "#1e1e1e", boxShadow: "none" }}>
-        <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            SQL Practice Queries
-          </Typography>
+      <AppBar
+        position="static"
+        sx={{ bgcolor: theme.palette.background.paper, boxShadow: "none" }}
+      >
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <IconButton
+              color="inherit"
+              onClick={() => {
+                const from = location.state?.from;
+                if (from) {
+                  navigate(from);
+                } else {
+                  navigate("/traincode");
+                }
+              }}
+            >
+              <ArrowBackIcon />
+            </IconButton>
 
-          {/* Burger Icon */}
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerToggle}
-            sx={{
-              position: "absolute",
-              top: 65,
-              right: 20,
-              zIndex: 1200,
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
+            <Typography variant="h6">Train & Code</Typography>
+          </Box>
+
+          {/* Timer + Menu */}
+          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <Stopwatch />
+            <IconButton color="inherit" onClick={handleDrawerToggle}>
+              <MenuIcon />
+            </IconButton>
+          </Box>
         </Toolbar>
 
         {/* Navigation Tabs */}
         <Tabs
           value={currentTabIndex === -1 ? 0 : currentTabIndex}
           onChange={handleChange}
-          variant="standard"
           textColor="inherit"
           TabIndicatorProps={{
-            style: { backgroundColor: "#3b82f6", height: 3 },
+            style: { backgroundColor: theme.palette.primary.main, height: 3 },
           }}
           sx={{
             px: 3,
             "& .MuiTab-root": {
               textTransform: "none",
               fontWeight: 500,
-              color: "#cbd5e1",
+              color: theme.palette.text.secondary,
               minWidth: 100,
             },
             "& .Mui-selected": {
-              color: "#fff",
+              color: theme.palette.text.primary,
               fontWeight: "bold",
             },
           }}
@@ -142,21 +165,20 @@ export default function TrainCodeTabs() {
         PaperProps={{
           sx: {
             width: 300,
-            mt:8,
-            backgroundColor: "#222",
-            color: "white",
+            mt: 8,
+            backgroundColor: theme.palette.background.paper,
+            color: theme.palette.text.primary,
           },
         }}
       >
         <Box sx={{ p: 2, position: "relative" }}>
-          {/* Close Icon */}
           <IconButton
             onClick={handleDrawerToggle}
             sx={{
               position: "absolute",
               top: 8,
               left: 8,
-              color: "white",
+              color: theme.palette.text.primary,
             }}
           >
             <CloseIcon />
@@ -165,7 +187,7 @@ export default function TrainCodeTabs() {
           <Typography variant="h6" gutterBottom sx={{ pr: 4, mt: 4 }}>
             Practice Basic Commands
           </Typography>
-          <Divider sx={{ bgcolor: "#374151", my: 1 }} />
+          <Divider sx={{ bgcolor: theme.palette.divider, my: 1 }} />
           <List>
             {drawerItems.map((item, index) => (
               <ListItem button key={index}>

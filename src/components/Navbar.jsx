@@ -131,7 +131,7 @@ export default function Navbar({ toggleTheme, isDarkMode }) {
               { label: "Learn & Code", to: "/skilltrack" },
             ]}
           />
-          <HoverDropdown
+          {/* <HoverDropdown
             label="Courses"
             menuItems={[
               { label: "Digital", to: "/courses/Digital" },
@@ -146,7 +146,7 @@ export default function Navbar({ toggleTheme, isDarkMode }) {
               { label: "Design", to: "/courses/Design" },
               { label: "Verification", to: "/courses/Verification" },
             ]}
-          />
+          /> */}
           <HoverDropdown
             label="Interview"
             menuItems={[

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import {
   Box,
   Grid,
@@ -13,10 +13,11 @@ import { motion } from "framer-motion";
 
 
 
-export default function EDAPlaygroundUI() {
+export default function CodeS() {
   const [designCode, setDesignCode] = useState("module design;\nendmodule");
   const [tbCode, setTbCode] = useState("module tb;\nendmodule");
   const navigate = useNavigate();
+  const location = useLocation();
 
   
 
@@ -44,8 +45,14 @@ export default function EDAPlaygroundUI() {
         {/* Back Button */}
         <Button
           variant="outlined"
-          onClick={() => navigate("/coding")} // Go back to previous page
-          sx={{ alignSelf: "flex-start", ml: 2, mt: 1 }}
+onClick={() => {
+    const from = location.state?.from;
+    if (from) {
+      navigate(from);
+    } else {
+      navigate("/traincode");
+    }
+  }}          sx={{ alignSelf: "flex-start", ml: 2, mt: 1 }}
         >
           ← Back
         </Button>
