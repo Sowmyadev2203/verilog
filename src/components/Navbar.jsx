@@ -18,7 +18,9 @@ import {
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { useTheme } from "@mui/material/styles";
 
+// Styles for the hover effect in menu items
 const hoverStyles = {
   textTransform: "none",
   position: "relative",
@@ -44,6 +46,7 @@ const hoverStyles = {
   },
 };
 
+// Dropdown menu component
 function HoverDropdown({ label, menuItems = [] }) {
   const [open, setOpen] = useState(false);
   const anchorRef = React.useRef(null);
@@ -98,15 +101,24 @@ function HoverDropdown({ label, menuItems = [] }) {
   );
 }
 
+// Navbar component
 export default function Navbar({ toggleTheme, isDarkMode }) {
+  const theme = useTheme(); // Use theme hook inside the component
+
   return (
     <AppBar
-      position="fixed" // ✅ changed to fixed
+      position="fixed"
       elevation={0}
       sx={{
-        zIndex: 2000, // ✅ higher z-index to stay above everything
-        backgroundColor: "background.paper",
+        zIndex: 2000,
+        backgroundColor:
+          theme.palette.mode === "dark"
+            ? "rgba(0, 0, 0, 0)" // Dark mode transparent background
+            : "rgba(255, 255, 255, 0.2)", // Light mode transparent background
+        backdropFilter: "blur(10px)", // Glassmorphism effect
+        WebkitBackdropFilter: "blur(10px)", // Safari support
         color: "text.primary",
+        boxShadow: "none", // Remove box shadow for a clean look
       }}
     >
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -127,26 +139,8 @@ export default function Navbar({ toggleTheme, isDarkMode }) {
 
           <HoverDropdown
             label="Codelab"
-            menuItems={[
-              { label: "Learn & Code", to: "/skilltrack" },
-            ]}
+            menuItems={[{ label: "Learn & Code", to: "/skilltrack" }]}
           />
-          {/* <HoverDropdown
-            label="Courses"
-            menuItems={[
-              { label: "Digital", to: "/courses/Digital" },
-              { label: "Verilog", to: "/courses/Verilog" },
-              { label: "SystemVerilog", to: "/courses/SystemVerilog" },
-              { label: "UVM", to: "/courses/UVM" },
-            ]}
-          />
-          <HoverDropdown
-            label="Projects"
-            menuItems={[
-              { label: "Design", to: "/courses/Design" },
-              { label: "Verification", to: "/courses/Verification" },
-            ]}
-          /> */}
           <HoverDropdown
             label="Interview"
             menuItems={[
@@ -177,11 +171,13 @@ export default function Navbar({ toggleTheme, isDarkMode }) {
               <AccountCircleIcon />
             </IconButton>
           </Tooltip>
-          <Button component={Link} to="/login" color="inherit">Login</Button>
-          <Button component={Link} to="/verilog" color="inherit">Verilog</Button>
-          <Tooltip
-            title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-          >
+          <Button component={Link} to="/login" color="inherit">
+            Login
+          </Button>
+          <Button component={Link} to="/verilog" color="inherit">
+            Verilog
+          </Button>
+          <Tooltip title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}>
             <IconButton onClick={toggleTheme} color="inherit">
               {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
             </IconButton>

@@ -21,8 +21,13 @@ const Home = () => {
     navigate("/intermediate");
   };
 
+  const handleTraining = () => {
+        navigate("/traincode");
+
+  };
+
   const handleBack = () => {
-    navigate("/traincode");
+    navigate("/");
   };
 
   return (
@@ -118,7 +123,7 @@ const Home = () => {
               <Button
                 variant="contained"
                 color="primary"
-                onClick={handleBack}
+                onClick={handleTraining}
                 sx={{ px: 4, py: 1.5 }}
               >
                 Training
@@ -129,7 +134,7 @@ const Home = () => {
       )}
 
       {/* === Page Content === */}
-      <Box
+      {/* <Box
         sx={{
           textAlign: "center",
           mt: 8,
@@ -147,7 +152,7 @@ const Home = () => {
             Training
           </Button>
         </Box>
-      </Box>
+      </Box> */}
     </Box>
   );
 };
