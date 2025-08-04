@@ -1,24 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Box,
-  Grid,
-  Paper,
-  Typography,
-  Button,
-  Stack,
-} from "@mui/material";
+import { Box, Grid, Paper, Typography, Button, Stack } from "@mui/material";
 import Editor from "@monaco-editor/react";
 import { motion } from "framer-motion";
-
-
 
 export default function EDAPlaygroundUI() {
   const [designCode, setDesignCode] = useState("module design;\nendmodule");
   const [tbCode, setTbCode] = useState("module tb;\nendmodule");
   const navigate = useNavigate();
-
-  
 
   return (
     <motion.div
@@ -50,17 +39,14 @@ export default function EDAPlaygroundUI() {
           ← Back
         </Button>
 
-       
-
         {/* Code Editor Panels */}
-        <Grid container spacing={1} sx={{ flexGrow: 1 }}>
+        <Grid container spacing={1} sx={{ flexGrow: 1, mt: 7 }}>
           {/* Design Block */}
           <Grid item xs={5}>
             <Paper
               elevation={3}
               sx={{
-                p: 1,
-                height: "100%",
+                p: 2,
                 display: "flex",
                 flexDirection: "column",
                 marginLeft: "90px",
@@ -89,7 +75,6 @@ export default function EDAPlaygroundUI() {
               elevation={3}
               sx={{
                 p: 2,
-                height: "100%",
                 display: "flex",
                 flexDirection: "column",
               }}
@@ -113,7 +98,12 @@ export default function EDAPlaygroundUI() {
         </Grid>
 
         {/* Action Buttons */}
-        <Stack direction="row" justifyContent="center" spacing={1} sx={{ my: 1 }}>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          spacing={1}
+          sx={{ my: 1 }}
+        >
           <Button variant="outlined">RUN</Button>
           <Button variant="outlined" onClick={() => navigate("/waveform")}>
             WAVEFORM
